@@ -7,7 +7,16 @@ export const noteSlice = createSlice({
   },
   reducers: {
     addNewNote: (state, action) => {
-      console.log("User added a new note");
+      const date = new Date();
+      state.userNotes = [
+        {
+          note_id: Math.floor(Math.random() * 9999),
+          note_content: action.payload,
+          note_createdAt: date.toDateString(),
+        },
+        ...state.userNotes,
+      ];
+      console.log(state.userNotes);
     },
   },
 });
