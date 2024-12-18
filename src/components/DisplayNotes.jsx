@@ -1,4 +1,5 @@
 import React from "react";
+// useDispatch to dispach an action eg, a function. useSelector for getting values of the initial state
 import { useDispatch, useSelector } from "react-redux";
 import EditUserNote from "./EditUserNote";
 import { MdDelete } from "react-icons/md";
