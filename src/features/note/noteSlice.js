@@ -16,11 +16,25 @@ export const noteSlice = createSlice({
         },
         ...state.userNotes,
       ];
-      console.log(state.userNotes);
+    },
+    editNoteContent: (state, action) => {
+      state.userNotes = state.userNotes.map((item) => {
+        if (item.note_id === action.payload.note_to_editId) {
+          item.note_content = action.payload.content_to_update;
+        }
+        return item;
+      });
+    },
+
+    deleteUserNote: (state, action) => {
+      state.userNotes = state.userNotes.filter(
+        (item) => item.note_id !== action.payload
+      );
     },
   },
 });
 
-export const { addNewNote } = noteSlice.actions;
+export const { addNewNote, editNoteContent, deleteUserNote } =
+  noteSlice.actions;
 
 export default noteSlice.reducer;
